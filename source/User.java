@@ -162,7 +162,7 @@ public abstract class User implements IUser {
 
 	@Override
 	public void listAllMyAds() {
-		for (Entry<Object, Ad> entry : this.getMyAds().entrySet()) {
+		for (Entry<Object, Ad> entry : this.myAds.entrySet()) {
 			System.out.println(entry.getValue());
 		}
 	}
@@ -189,30 +189,32 @@ public abstract class User implements IUser {
 	public void upgrade(Ad ad, Criteria criteria, Object object) {
 		switch (criteria) {
 		case NAME: {
-			System.out.println(this.userName + "changes his ad's name " + ad.getName() + " to " + ((String) object));
+			System.out
+					.println(this.userName + " changes his ad's name \"" + ad.getName() + "\" to " + ((String) object));
 			ad.setName((String) object);
 			break;
 		}
 		case PRICE: {
-			System.out.println(this.userName + "changes his ad " + ad.getName() + "'s price to " + ((double) object));
+			System.out
+					.println(this.userName + "changes his ad \"" + ad.getName() + "\"'s price to " + ((double) object));
 			ad.setPricePerMonth((double) object);
 			break;
 		}
 		case NUMBER_OF_ROOMS: {
 			System.out.println(
-					this.userName + "changes his ad " + ad.getName() + "'s number of rooms to " + ((int) object));
+					this.userName + "changes his ad \"" + ad.getName() + "\"'s number of rooms to " + ((int) object));
 			ad.setNumberOfRooms((int) object);
 			break;
 		}
 		case SQUARE_METERS: {
 			System.out.println(
-					this.userName + "changes his ad " + ad.getName() + "'s square meters to " + ((double) object));
+					this.userName + "changes his ad \"" + ad.getName() + "\"'s square meters to " + ((double) object));
 			ad.setSquareMeters((double) object);
 			break;
 		}
 		case NEIGHBORHOOD: {
 			System.out.println(
-					this.userName + "changes his ad " + ad.getName() + "'s neighborhood to " + ((String) object));
+					this.userName + "changes his ad \"" + ad.getName() + "\"'s neighborhood to " + ((String) object));
 			ad.setNeighborhood((String) object);
 			break;
 		}
@@ -284,7 +286,7 @@ public abstract class User implements IUser {
 	 */
 	public Message sendMessage(User user, Message message) {
 		System.out.println(this.getUserName() + " sent message to user: " + user.getName());
-		user.getMessages().put(message, this.getUserName());
+		user.messages.put(message, this.getUserName());
 		return message;
 	}
 
@@ -373,21 +375,20 @@ public abstract class User implements IUser {
 		}
 	}
 
-	Map<Message, String> getMessages() {
-		return messages;
+	Map<Object, Ad> getCopyOfMyAds() {
+		Map<Object, Ad> copyOfMyAds = new LinkedHashMap<Object, Ad>();
+		for (Entry<Object, Ad> ad : myAds.entrySet()) {
+			copyOfMyAds.put(ad.getKey(), ad.getValue());
+		}
+		return copyOfMyAds;
 	}
-
-	void setMessages(Map<Message, String> messages) {
-		this.messages = messages;
+	
+	void putAnAdd(Object obj, Ad ad){
+		myAds.put(obj, ad);
 	}
-
-	/// NE MOJE DA SE GET-VA CQLA KOLEKCIQ
-	Map<Object, Ad> getMyAds() {
-		return myAds;
-	}
-
-	void setMyAds(Map<Object, Ad> myAds) {
-		this.myAds = myAds;
+	
+	void removeAnAdd(Object obj, Ad ad){
+		myAds.remove(obj, ad);
 	}
 
 	boolean isBroker() {
