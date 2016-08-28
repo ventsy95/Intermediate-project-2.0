@@ -21,7 +21,7 @@ public class Agency extends User implements IAgency {
 			user.setBroker(true);
 			System.out.println("New broker :  " + user.getName() + " was hired in agency: " + this.getName());
 			for (Entry<Object, Ad> entry : user.getCopyOfMyAds().entrySet()) {
-				this.putAnAdd(entry.getKey(), entry.getValue());
+				this.putAnAd(entry.getKey(), entry.getValue());
 			}
 		}
 	}
@@ -31,7 +31,7 @@ public class Agency extends User implements IAgency {
 		user.setBroker(false);
 		brokers.remove(user);
 		for (Entry<Object, Ad> entry : user.getCopyOfMyAds().entrySet()) {
-			this.removeAnAdd(entry.getKey(), entry.getValue());
+			this.removeAnAd(entry.getKey(), entry.getValue());
 		}
 	}
 	

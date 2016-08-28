@@ -383,11 +383,11 @@ public abstract class User implements IUser {
 		return copyOfMyAds;
 	}
 	
-	void putAnAdd(Object obj, Ad ad){
+	void putAnAd(Object obj, Ad ad){
 		myAds.put(obj, ad);
 	}
 	
-	void removeAnAdd(Object obj, Ad ad){
+	void removeAnAd(Object obj, Ad ad){
 		myAds.remove(obj, ad);
 	}
 
