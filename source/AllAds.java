@@ -16,12 +16,10 @@ public class AllAds {
 
 	private static AllAds instance = new AllAds();
 
-	// make the constructor private so that this class cannot be instantiated
 	private AllAds() {
 		AllAds.allAds = new ArrayList<>();
 	}
 
-	// Get the only object available
 	public static AllAds getInstance() {
 		return instance;
 	}
