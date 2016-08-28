@@ -6,13 +6,13 @@ import java.util.Map.Entry;
 
 public class Demo {
 	public static void main(String[] args) {
-		User ivo = new RegisteredUser("Ivo", "ivo5","ValidenPass90", "089856587", "Sofia", "ivo@gmail.com");
+		User ivo = new RegisteredUser("Ivo", "ivo5","ValidenPass90", "0898565879", "Sofia", "ivo@gmail.com");
 		System.out.println(ivo.getPassword());
 		System.out.println("Tova e parolata sega : " + ivo.getPassword());
 		System.out.println(ivo.changePassword("ValidenPass90", "Moqpass90"));
 			
 		
-		User iva = new RegisteredUser("Iva", "iva5", "ivapss",  "089856587", "Sofia", "ivo@gmail.com");
+		User iva = new RegisteredUser("Iva", "iva5", "Ivapss3",  "0898565878", "Sofia", "ivo@gmail.com");
 		
 		ivo.sendMessage(iva, new Message("Imam interes", "Iskam da napravq ogled"));
 		ivo.sendMessage(iva, new Message("Nqmam interes", "Basi skupotiqta"));
